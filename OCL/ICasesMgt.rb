@@ -1,11 +1,11 @@
-interface ICasesMgt {
+interface ICaseMgt {
     -- Operations
     getCase() : Cases
     getDetailCase() : Cases
     assignLawyer() : boolean
 
     -- OCL Constraints
-    context ICasesMgt::assignLawyer() : boolean
+    context ICaseMgt::assignLawyer() : boolean
     pre: self.getCase() <> null and
          self.getCase().lawyerAssigned = null and
          self.getCase().status = 'Open'
@@ -37,3 +37,4 @@ interface ICasesMgt {
     
     inv openCaseConsistency: self.status = 'Open' implies
                             self.lawyerAssigned = null
+}
