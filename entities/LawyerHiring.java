@@ -1,7 +1,5 @@
-// LawyerHiring.java
 package entities;
 
-// LawyerHiring.java
 public class LawyerHiring {
     private String caseStatus;
     private String hiringDate;

@@ -1,19 +1,18 @@
-// Lawyer.java
 package entities;
 
-// Lawyer.java
 public class Lawyer {
     private String nama;
     private String spesialisasi;
     private boolean tersedia;
+    private double feePerCase;
     
-    public Lawyer(String nama, String spesialisasi) {
+    public Lawyer(String nama, String spesialisasi, double feePerCase) {
         this.nama = nama;
         this.spesialisasi = spesialisasi;
         this.tersedia = true;
+        this.feePerCase = feePerCase;
     }
     
-    // Getters and Setters
     public String getNama() { return nama; }
     public void setNama(String nama) { this.nama = nama; }
     
@@ -22,4 +21,7 @@ public class Lawyer {
     
     public boolean isTersedia() { return tersedia; }
     public void setTersedia(boolean tersedia) { this.tersedia = tersedia; }
+
+    public double getFeePerCase() { return feePerCase; }
+    public void setFeePerCase(double feePerCase) { this.feePerCase = feePerCase; }
 }

@@ -1,14 +1,15 @@
-// PaymentSystem.java
 package business;
 import interfaces.IProcessPayment;
 import entities.Payment;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-// PaymentSystem.java
 public class PaymentSystem implements IProcessPayment {
-    private java.util.List<Payment> paymentsList;
+    private List<Payment> paymentsList;
     
     public PaymentSystem() {
-        this.paymentsList = new java.util.ArrayList<>();
+        this.paymentsList = new ArrayList<>();
     }
     
     @Override
@@ -18,23 +19,23 @@ public class PaymentSystem implements IProcessPayment {
     
     @Override
     public boolean processPayment() {
-        try (java.util.Scanner scanner = new java.util.Scanner(System.in)) {
-            System.out.print("Masukkan nominal pembayaran: ");
-            try {
-                double nominal = scanner.nextDouble();
-                if (nominal > 0) {
-                    Payment payment = new Payment(nominal, "Berhasil", java.time.LocalDate.now().toString());
-                    paymentsList.add(payment);
-                    System.out.println("Pembayaran berhasil diproses!");
-                    return true;
-                } else {
-                    System.out.println("Nominal tidak valid!");
-                    return false;
-                }
-            } catch (Exception e) {
-                System.out.println("Input tidak valid!");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Masukkan nominal pembayaran: ");
+        try {
+            double nominal = scanner.nextDouble();
+            scanner.nextLine();
+            if (nominal > 0) {
+                Payment payment = new Payment(nominal, "Berhasil", java.time.LocalDate.now().toString());
+                paymentsList.add(payment);
+                System.out.println("Pembayaran berhasil diproses!");
+                return true;
+            } else {
+                System.out.println("Nominal tidak valid!");
                 return false;
             }
+        } catch (Exception e) {
+            System.out.println("Input tidak valid!");
+            return false;
         }
     }
     
@@ -51,5 +52,13 @@ public class PaymentSystem implements IProcessPayment {
             System.out.println("Pembayaran kurang. Kekurangan: Rp " + kekurangan);
             return false;
         }
+    }
+    
+    public List<Payment> getAllPayments() {
+        return paymentsList;
+    }
+    
+    public void setPayments(List<Payment> payments) {
+        this.paymentsList = payments;
     }
 }

@@ -1,7 +1,5 @@
-// Cases.java
 package entities;
 
-// Cases.java
 public class Cases {
     private String caseTitle;
     private String caseDescription;
@@ -9,6 +7,7 @@ public class Cases {
     private String status;
     private double fee;
     private boolean isPaid;
+    private Client client;
     
     public Cases(String caseTitle, String caseDescription) {
         this.caseTitle = caseTitle;
@@ -17,7 +16,9 @@ public class Cases {
         this.isPaid = false;
     }
     
-    // Getters and Setters
+    public Client getClient() { return client; }
+    public void setClient(Client client) { this.client = client; }
+
     public String getCaseTitle() { return caseTitle; }
     public void setCaseTitle(String caseTitle) { this.caseTitle = caseTitle; }
     

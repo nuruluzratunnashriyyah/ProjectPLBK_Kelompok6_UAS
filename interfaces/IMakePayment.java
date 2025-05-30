@@ -1,7 +1,7 @@
-// IMakePayment.java
 package interfaces;
+import entities.Cases;
 
 public interface IMakePayment {
-    void getCase();
+    Cases getCase();
     void getDetailPayment();
 }

@@ -1,7 +1,5 @@
-// Client.java
 package entities;
 
-// Client.java
 public class Client {
     private String nama;
     private String kontak;
@@ -18,7 +16,6 @@ public class Client {
         this.alamat = alamat;
     }
     
-    // Getters and Setters
     public String getNama() { return nama; }
     public void setNama(String nama) { this.nama = nama; }
     

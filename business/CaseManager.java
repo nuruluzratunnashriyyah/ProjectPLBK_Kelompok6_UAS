@@ -1,14 +1,17 @@
-// CaseManager.java
 package business;
 import interfaces.ICaseMgt;
 import entities.Cases;
+import entities.Lawyer;
 
-// CaseManager.java
+import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
 public class CaseManager implements ICaseMgt {
-    private java.util.List<Cases> casesList;
+    private List<Cases> casesList;
     
     public CaseManager() {
-        this.casesList = new java.util.ArrayList<>();
+        this.casesList = new ArrayList<>();
     }
     
     @Override
@@ -34,14 +37,14 @@ public class CaseManager implements ICaseMgt {
     
     @Override
     public void assignLawyer() {
-        // Implementation for assigning lawyer
+        System.out.println("Assign lawyer implementation");
     }
     
     public void addCase(Cases newCase) {
         casesList.add(newCase);
     }
     
-    public java.util.List<Cases> getAllCases() {
+    public List<Cases> getAllCases() {
         return casesList;
     }
     
@@ -52,5 +55,25 @@ public class CaseManager implements ICaseMgt {
             }
         }
         return null;
+    }
+    
+    public Cases getClientCase(String clientEmail) {
+        for (Cases c : casesList) {
+            if (c.getClient() != null && c.getClient().getEmail().equals(clientEmail)) {
+                return c;
+            }
+        }
+        return null;
+    }
+    
+    public void setCases(List<Cases> cases) {
+        this.casesList = cases;
+    }
+
+    public void assignLawyerToCase(Cases caseToAssign, Lawyer lawyerToAssign) {
+        caseToAssign.setLawyerAssigned(lawyerToAssign);
+        caseToAssign.setStatus("Assigned");
+        caseToAssign.setFee(lawyerToAssign.getFeePerCase());
+        lawyerToAssign.setTersedia(false);
     }
 }

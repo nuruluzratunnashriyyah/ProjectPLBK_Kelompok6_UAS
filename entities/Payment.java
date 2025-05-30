@@ -1,7 +1,5 @@
-// Payment.java
 package entities;
 
-// Payment.java
 public class Payment {
     private double amount;
     private String paymentStatus;

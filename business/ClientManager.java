@@ -1,14 +1,14 @@
-// ClientManager.java
 package business;
 import interfaces.IClientMgt;
 import entities.Client;
+import java.util.List;
+import java.util.ArrayList;
 
-// ClientManager.java
 public class ClientManager implements IClientMgt {
-    private java.util.List<Client> clientsList;
+    private List<Client> clientsList;
     
     public ClientManager() {
-        this.clientsList = new java.util.ArrayList<>();
+        this.clientsList = new ArrayList<>();
     }
     
     @Override
@@ -33,11 +33,15 @@ public class ClientManager implements IClientMgt {
     
     @Override
     public void deleteClient() {
-        // Implementation for deleting client
+        System.out.println("Delete client implementation");
     }
     
-    public void addClient(Client client) {
+    public boolean addClient(Client client) {
+        if (getClientByEmail(client.getEmail()) != null) {
+            return false; // Email already exists
+        }
         clientsList.add(client);
+        return true; // Successfully added
     }
     
     public Client getClientByEmail(String email) {
@@ -49,7 +53,11 @@ public class ClientManager implements IClientMgt {
         return null;
     }
     
-    public java.util.List<Client> getAllClients() {
+    public List<Client> getAllClients() {
         return clientsList;
+    }
+    
+    public void setClients(List<Client> clients) {
+        this.clientsList = clients;
     }
 }
