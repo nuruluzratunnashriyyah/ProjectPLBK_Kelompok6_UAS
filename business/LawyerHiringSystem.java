@@ -418,6 +418,8 @@ public class LawyerHiringSystem implements IMakeHire, ICancelHire, IMakePayment 
                 System.out.println("Input tidak valid!");
                 scanner.nextLine();
             }
+        } else {
+            System.out.println("Tidak ada pengacara yang tersedia!");
         }
         
         // Simpan kasus baru
