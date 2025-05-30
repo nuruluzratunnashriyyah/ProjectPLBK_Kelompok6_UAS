@@ -167,8 +167,8 @@ public class DatabaseManager {
         try (Scanner scanner = new Scanner(new File("hirings.txt"))) {
             while (scanner.hasNextLine()) {
                 String[] parts = scanner.nextLine().split(",");
-                if (parts.length >= 2) {
-                    hirings.add(new LawyerHiring(parts[0], parts[1]));
+                if (parts.length >= 4) {
+                    hirings.add(new LawyerHiring(parts[0], parts[1], parts[2], parts[3]));
                 }
             }
         } catch (FileNotFoundException e) {
@@ -182,7 +182,9 @@ public class DatabaseManager {
             for (LawyerHiring lh : hirings) {
                 writer.println(String.join(",",
                     lh.getCaseStatus(),
-                    lh.getHiringDate()
+                    lh.getHiringDate(),
+                    lh.getClientEmail(),
+                    lh.getLawyerName()
                 ));
             }
         } catch (IOException e) {

@@ -662,7 +662,7 @@ public class LawyerHiringSystem implements IMakeHire, ICancelHire, IMakePayment 
     
     private void assignLawyerToSpecificCase(Cases selectedCase) {
         List<Lawyer> availableLawyers = ((LawyerManager)lawyerManager).getAvailableLawyers();
-        
+
         if (availableLawyers.isEmpty()) {
             System.out.println("Tidak ada pengacara tersedia.");
             return;
@@ -688,12 +688,18 @@ public class LawyerHiringSystem implements IMakeHire, ICancelHire, IMakePayment 
             }
             
             Lawyer selectedLawyer = availableLawyers.get(lawyerChoice-1);
-            
+
             // Call the updated method
             ((CaseManager)caseManager).assignLawyerToCase(selectedCase, selectedLawyer);
             
             // Add to hiring records
-            LawyerHiring newHiring = new LawyerHiring("Active", java.time.LocalDate.now().toString());
+            LawyerHiring newHiring = new LawyerHiring(
+                "Active", 
+                java.time.LocalDate.now().toString(),
+                selectedCase.getClient().getEmail(),
+                selectedLawyer.getNama()
+            );
+            
             hiringsList.add(newHiring);
             
             // Save changes
