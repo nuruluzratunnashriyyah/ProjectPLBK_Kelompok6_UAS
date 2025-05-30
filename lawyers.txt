@@ -1,1 +1,2 @@
-Aira,Perdata,3000000.0,true
+Aira,Perdata,3000000.0,false
+husna,pidana,5000000.0,true

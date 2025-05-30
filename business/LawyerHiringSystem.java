@@ -252,7 +252,7 @@ public class LawyerHiringSystem implements IMakeHire, ICancelHire, IMakePayment 
         // Dapatkan semua kasus user
         List<Cases> userCases = ((CaseManager)caseManager).getAllCases().stream()
                 .filter(c -> c.getClient() != null && currentUser.getEmail().equals(c.getClient().getEmail()))
-                .toList();
+                .collect(Collectors.toList());
 
         // Pisahkan kasus aktif dan selesai
         Cases activeCase = null;
@@ -552,7 +552,7 @@ public class LawyerHiringSystem implements IMakeHire, ICancelHire, IMakePayment 
     private void completeCase() {
         List<Cases> paidCases = ((CaseManager)caseManager).getAllCases().stream()
             .filter(c -> "Paid".equalsIgnoreCase(c.getStatus()))
-            .toList();
+            .collect(Collectors.toList());
 
         if (paidCases.isEmpty()) {
             System.out.println("Tidak ada kasus dengan status Paid");
